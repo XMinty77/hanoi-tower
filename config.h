@@ -8,8 +8,12 @@ extern const int SKIPPING;
 extern const int DELAY;
 // 7 for 144, 16 for 60, 0 for instant
 
-extern const int MARGIN;
-extern const int RECTANGLE;
-extern const int HEIGHT;
+extern const int MARGIN_X;
+extern const int MARGIN_Y;
+extern const int BLOCK_WIDTH;
+extern const int BLOCKS_HEIGHT;
+
+extern const int WIN_WIDTH;
+extern const int WIN_HEIGHT;
 
 #endif //HANOITOWER_CONFIG_H

@@ -24,7 +24,7 @@ void render_init(int _count, int **_towers) {
         "Hanoi Tower",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        800, 600,
+        WIN_WIDTH, WIN_HEIGHT,
         SDL_WINDOW_SHOWN
     );
 
@@ -64,17 +64,17 @@ void render() {
         SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
         SDL_RenderClear(renderer);
 
-        int height = HEIGHT / render_count;
+        int height = BLOCKS_HEIGHT / render_count;
         for (int i = 0; i < 3; i++) {
             int *tower = render_towers[i];
-            int basex = MARGIN * (i + 1) + RECTANGLE * i + RECTANGLE / 2;
-            int basey = 50;
+            int basex = MARGIN_X * (i + 1) + BLOCK_WIDTH * i + BLOCK_WIDTH / 2;
+            int basey = MARGIN_Y;
             for (int j = 0; j < render_count; j++) {
                 int block = tower[j];
                 if (block == -1) continue;
                 RGB_Color color = HSL_to_RGB(360.0 * block / render_count, 1.0, 0.5);
-                int width = RECTANGLE * (render_count - block) / render_count;
-                SDL_Rect rect = { basex - width / 2, (basey + j * height), width, height };
+                int width = BLOCK_WIDTH * (render_count - block) / render_count;
+                SDL_Rect rect = { basex - width / 2, WIN_HEIGHT - (basey + j * height), width, -height };
 
                 double r = floor(color.R * 255.0), g = floor(color.G * 255.0), b = floor(color.B * 255.0);
                 uint8_t R = (uint8_t)r, G = (uint8_t)g, B = (uint8_t)b;
